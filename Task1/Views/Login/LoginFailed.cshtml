@@ -1,0 +1,18 @@
+﻿@model Task1.Models.UserModel
+
+<div>
+	<h4>Login Failed</h4>
+	<hr />
+
+	<h3 class="error">Incorrect username or password</h3>
+	
+</div>
+<div>
+	
+	<p>
+		@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+		<a asp-action="Index">Try again</a> |
+		<a asp-action="index">Back to main screen</a>
+	</p>
+	
+</div>
