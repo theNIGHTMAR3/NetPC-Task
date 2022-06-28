@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Task1.Models;
 using Task1.Security;
@@ -21,6 +22,9 @@ namespace Task1.Controllers
 			//if login and password is correct
 			if(authentication.IsUserValid(tempUser))
 			{
+				// set session to logged user
+				HttpContext.Session.SetString("user", tempUser.Username);
+
 				return View("LoginSuccess", tempUser);
 			}
 			//else input data is uncorrect
@@ -30,6 +34,12 @@ namespace Task1.Controllers
 			}
 
 			
+		}
+		// clear session after logout
+		public IActionResult Logout(UserModel tempUser)
+		{
+			HttpContext.Session.Clear();
+			return View("Index");
 		}
 	}
 }

@@ -31,32 +31,7 @@ namespace Task1.Security
 			return !usersDAO.FindUserByLogin(user.Username);
 		}
 
-		// cheks if given password is strong enough
-		public bool IsPasswordStrongEnough(string password)
-		{
-			// is long enough
-			if (password.Length<7)
-			{
-				return false;
-			}
-			// contains at leat 1 Capital letter
-			if (!password.Any(char.IsUpper))
-			{
-				return false;
-			}
-			// contains at leat 1 digit
-			if (!password.Any(char.IsDigit))
-			{
-				return false;
-			}
-			// does not contain white space	
-			if (password.Contains(" "))
-			{
-				return false;
-			}
-			
-			return true;
-		}
+		
 
 		// register new user to application
 		public bool RegisterNewUser(UserModel user)

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -8,6 +9,35 @@ namespace Task1.Utils
 	// utility class for some helpful static methods
 	public static class Utilities
 	{
+		// cheks if given password is strong enough
+		public static bool IsPasswordStrongEnough(string password)
+		{
+			// is long enough
+			if (password.Length < 7)
+			{
+				return false;
+			}
+			// contains at leat 1 Capital letter
+			if (!password.Any(char.IsUpper))
+			{
+				return false;
+			}
+			// contains at leat 1 digit
+			if (!password.Any(char.IsDigit))
+			{
+				return false;
+			}
+			// does not contain white space	
+			if (password.Contains(" "))
+			{
+				return false;
+			}
+			return true;
+		}
+
+
+
+
 		// took these methods from microsoft documentations
 		// create hash from string
 		public static string GetHash(HashAlgorithm hashAlgorithm, string input)

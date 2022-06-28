@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Task1.Models;
 using Task1.Security;
+using Task1.Utils;
 
 namespace Task1.Controllers
 {
@@ -24,7 +25,7 @@ namespace Task1.Controllers
 			UserAuthentication authentication = new();
 
 			// if login and password are correct to add new user
-			if (authentication.IsLoginAvailable(user) && authentication.IsPasswordStrongEnough(user.PasswordHash))
+			if (authentication.IsLoginAvailable(user) && Utilities.IsPasswordStrongEnough(user.PasswordHash))
 			{
 				// check if DB handled querry
 				if(authentication.RegisterNewUser(user))

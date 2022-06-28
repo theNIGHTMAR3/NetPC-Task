@@ -1,12 +1,18 @@
 ﻿@model IEnumerable<Task1.Models.ContactModel>
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor
 
 @{
 	ViewData["Title"] = "Contacts";
 }
 
-<p>
-	<a asp-action="Create">Create New</a>
-</p>
+@if (Accessor.HttpContext.Session.GetString("user") != null)
+{
+	<p>
+		<a asp-action="Create">Create New</a>
+	</p>
+}
+
 <table class="table">
 	<thead>
 		<tr>
@@ -22,9 +28,14 @@
 			<th>
 				@Html.DisplayNameFor(model => model.Category)
 			</th>
-			<th>
-				Action
-			</th>
+
+			@if (Accessor.HttpContext.Session.GetString("user") != null)
+			{
+				<th>
+					Action
+				</th>
+			}
+
 
 			<th></th>
 		</tr>
@@ -43,16 +54,21 @@
 					<td>
 						@Html.DisplayFor(modelItem => item.Email)
 					</td>
-					
+
 					<td>
 						@Html.DisplayFor(modelItem => item.Category)
 					</td>
-					
-					<td>
-						@Html.ActionLink("Edit", "Edit", new {  id=item.ID  }) |
-						@Html.ActionLink("Details", "Details", new {  id=item.ID  }) |
-						@Html.ActionLink("Delete", "Delete", new {  id=item.ID  })
-					</td>
+
+					@if (Accessor.HttpContext.Session.GetString("user") != null)
+					{
+						<td>
+							@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+							@Html.ActionLink("Details", "Details", new { id = item.ID }) |
+							@Html.ActionLink("Delete", "Delete", new { id = item.ID })
+						</td>
+					}
+
+
 				</tr>
 			}
 	</tbody>

@@ -28,15 +28,15 @@ namespace Task1.Controllers
 		public IActionResult Summary(ContactModel contact)
 		{
 			// if there does not exist contact with given adress
-			if(!contactsDAO.CheckIfEmailExists(contact.Email))
+			if(!contactsDAO.CheckIfEmailExists(contact.Email) && Utilities.IsPasswordStrongEnough(contact.Password))
 			{
 				// add contact to the DB
 				contactsDAO.AddNewContact(contact);
 				// show summary of added contact
 				return View("Summary",contact);
 			}
-			// TODO
-			return View("ContactFailed");
+			// when failed to create a contact
+			return View("ContactFailed",contact);
 		}
 		
 		// show single contact details
