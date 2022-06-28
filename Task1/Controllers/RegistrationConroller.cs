@@ -10,22 +10,22 @@ using Task1.Security;
 
 namespace Task1.Controllers
 {
-	public class LoginController : Controller
+	public class RegistationController : Controller
 	{
-		//private readonly ILogger<HomeController> _logger;
+		
 
 		public IActionResult Index()
 		{
 			return View();
 		}
 		//handles logging into application
-		public IActionResult LoginProcess(UserModel user)
+		public IActionResult RegistrationProcess(UserModel user)
 		{
 
 			UserAuthentication authentication = new();
 
 			//if login and password is correct
-			if(authentication.IsUserValid(user))
+			if (authentication.IsLoginAvailable(user))
 			{
 				return View("LoginSuccess", user);
 			}
@@ -35,7 +35,7 @@ namespace Task1.Controllers
 				return View("LoginFailed", user);
 			}
 
-			
+
 		}
 	}
 }
