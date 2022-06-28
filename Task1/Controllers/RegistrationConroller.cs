@@ -10,31 +10,41 @@ using Task1.Security;
 
 namespace Task1.Controllers
 {
-	public class RegistationController : Controller
+	public class RegistrationController : Controller
 	{
-		
-
+	
 		public IActionResult Index()
 		{
 			return View();
 		}
-		//handles logging into application
+		// handles new user registration 
 		public IActionResult RegistrationProcess(UserModel user)
 		{
 
 			UserAuthentication authentication = new();
 
-			//if login and password is correct
-			if (authentication.IsLoginAvailable(user))
+			// if login and password are correct to add new user
+			if (authentication.IsLoginAvailable(user) && authentication.IsPasswordStrongEnough(user.PasswordHash))
 			{
-				return View("LoginSuccess", user);
+				// check if DB handled querry
+				if(authentication.RegisterNewUser(user))
+				{
+					return View("RegistrationSuccess", user);
+				}
+				else
+				{
+					ViewBag.ErrorMessage = "DB error";
+					return View("RegistrationFailed", user);
+				}
+
 			}
-			//else input data is uncorrect
+			// else input data is incorrect
 			else
 			{
-				return View("LoginFailed", user);
+				// return View("Index", user,"test");
+				ViewBag.ErrorMessage = "Input error";
+				return View("RegistrationFailed", user);
 			}
-
 
 		}
 	}

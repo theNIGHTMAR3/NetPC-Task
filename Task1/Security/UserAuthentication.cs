@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using Task1.Models;
 using Task1.Utils;
@@ -8,23 +9,12 @@ namespace Task1.Security
 	// authenticates users after login
 	public class UserAuthentication
 	{
-		readonly List<UserModel> registredUsers = new();
 		readonly UsersDAO usersDAO = new ();
 
 		// authentication constructor with some hard-coded users
 		public UserAuthentication()
 		{
-			// initalize sha256
-			using (SHA256 mySHA256 = SHA256.Create())
-			{
-				// compute password hash
-				string hash1 = Utilities.GetHash(mySHA256, "test");
-				string hash2 = Utilities.GetHash(mySHA256, "MK");
-
-				// create
-				registredUsers.Add(new UserModel("test", hash1));
-				registredUsers.Add(new UserModel("MichałKuprianowicz", hash2));
-			}
+			
 		}
 
 
@@ -45,13 +35,45 @@ namespace Task1.Security
 		// cheks if given password is strong enough
 		public bool IsPasswordStrongEnough(string password)
 		{
+			// is long enough
 			if (password.Length<7)
 			{
 				return false;
 			}
+			// contains at leat 1 Capital letter
+			if (!password.Any(char.IsUpper))
+			{
+				return false;
+			}
+			// contains at leat 1 digit
+			if (!password.Any(char.IsDigit))
+			{
+				return false;
+			}
+			// does not contain white space	
+			if (password.Contains(" "))
+			{
+				return false;
+			}
 			
-
 			return true;
 		}
+
+		// register new user to application
+		public bool RegisterNewUser(UserModel user)
+		{
+			// add new user to DB
+			if(usersDAO.AddUserToDataBase(user))
+			{
+				return true;
+			}
+			else 
+			{
+				// error when something went wrong with DB
+				return false;
+			}
+		}
+
+
 	}
 }

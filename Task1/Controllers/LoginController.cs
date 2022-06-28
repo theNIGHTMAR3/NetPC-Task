@@ -19,20 +19,20 @@ namespace Task1.Controllers
 			return View();
 		}
 		//handles logging into application
-		public IActionResult LoginProcess(UserModel user)
+		public IActionResult LoginProcess(UserModel tempUser)
 		{
 
 			UserAuthentication authentication = new();
 
 			//if login and password is correct
-			if(authentication.IsUserValid(user))
+			if(authentication.IsUserValid(tempUser))
 			{
-				return View("LoginSuccess", user);
+				return View("LoginSuccess", tempUser);
 			}
 			//else input data is uncorrect
 			else
 			{
-				return View("LoginFailed", user);
+				return View("LoginFailed", tempUser);
 			}
 
 			

@@ -11,34 +11,22 @@ namespace Task1.Models
 	{
 		//basic info about user
 		public int ID { get; set; }
-		static int nextID;
 		public string Username { get; set; }
 
 		//change displaying PasswordHash to Password
 		[Display(Name = "Password")]
-		public string passwordHash;
-		public string PasswordHash
-		{
-			get { return passwordHash; }
-			//override set to compute hash and dont store real password
-			set
-			{
-				//initialize sha256
-				SHA256 mySHA256 = SHA256.Create();
-				//compute hash
-				string hash= Utilities.GetHash(mySHA256, value);
-				//store in the class field
-				passwordHash = hash;
-				
-			}		 
-		}
-		public UserModel() { this.ID = -1; }
+
+		public string PasswordHash { get; set; }
+
+		public UserModel() {}
+
 		//constructor from new user
-		public UserModel(string Username, string passwordHash)
+		public UserModel(int ID,string Username, string passwordHash)
 		{
+			this.ID = ID;
 			this.Username = Username;
-			this.passwordHash = passwordHash;
-			this.ID = Interlocked.Increment(ref nextID);
+			this.PasswordHash = passwordHash;
+			
 		}
 		
 

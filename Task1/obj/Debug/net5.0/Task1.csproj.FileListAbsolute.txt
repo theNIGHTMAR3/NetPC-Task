@@ -123,3 +123,6 @@ C:\Users\Michał Kuprianowicz\Desktop\NetPC-Task\Task1\bin\Debug\net5.0\runtimes
 C:\Users\Michał Kuprianowicz\Desktop\NetPC-Task\Task1\bin\Debug\net5.0\runtimes\win-x86\native\sni.dll
 C:\Users\Michał Kuprianowicz\Desktop\NetPC-Task\Task1\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Michał Kuprianowicz\Desktop\NetPC-Task\Task1\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Michał Kuprianowicz\Desktop\NetPC-Task\Task1\obj\Debug\net5.0\Razor\Views\Registration\index.cshtml.g.cs
+C:\Users\Michał Kuprianowicz\Desktop\NetPC-Task\Task1\obj\Debug\net5.0\Razor\Views\Registration\RegistrationSuccess.cshtml.g.cs
+C:\Users\Michał Kuprianowicz\Desktop\NetPC-Task\Task1\obj\Debug\net5.0\Razor\Views\Registration\RegistrationFailed.cshtml.g.cs
