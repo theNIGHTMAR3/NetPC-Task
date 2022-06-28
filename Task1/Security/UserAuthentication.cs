@@ -14,9 +14,8 @@ namespace Task1.Security
 		// authentication constructor with some hard-coded users
 		public UserAuthentication()
 		{
-			
+	
 		}
-
 
 		// checks if given user is registered
 		public bool IsUserValid(UserModel user)

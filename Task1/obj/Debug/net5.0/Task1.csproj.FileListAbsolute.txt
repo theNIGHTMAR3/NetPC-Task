@@ -126,3 +126,8 @@ C:\Users\Michał Kuprianowicz\Desktop\NetPC-Task\Task1\bin\Debug\net5.0\runtimes
 C:\Users\Michał Kuprianowicz\Desktop\NetPC-Task\Task1\obj\Debug\net5.0\Razor\Views\Registration\index.cshtml.g.cs
 C:\Users\Michał Kuprianowicz\Desktop\NetPC-Task\Task1\obj\Debug\net5.0\Razor\Views\Registration\RegistrationSuccess.cshtml.g.cs
 C:\Users\Michał Kuprianowicz\Desktop\NetPC-Task\Task1\obj\Debug\net5.0\Razor\Views\Registration\RegistrationFailed.cshtml.g.cs
+C:\Users\Michał Kuprianowicz\Desktop\NetPC-Task\Task1\obj\Debug\net5.0\Razor\Views\Contact\Create.cshtml.g.cs
+C:\Users\Michał Kuprianowicz\Desktop\NetPC-Task\Task1\obj\Debug\net5.0\Razor\Views\Contact\Summary.cshtml.g.cs
+C:\Users\Michał Kuprianowicz\Desktop\NetPC-Task\Task1\obj\Debug\net5.0\Razor\Views\Contact\Index.cshtml.g.cs
+C:\Users\Michał Kuprianowicz\Desktop\NetPC-Task\Task1\obj\Debug\net5.0\Razor\Views\Contact\ShowDetails.cshtml.g.cs
+C:\Users\Michał Kuprianowicz\Desktop\NetPC-Task\Task1\obj\Debug\net5.0\Razor\Views\Contact\EditContact.cshtml.g.cs

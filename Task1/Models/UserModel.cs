@@ -11,11 +11,12 @@ namespace Task1.Models
 	{
 		//basic info about user
 		public int ID { get; set; }
+		[Required]
 		public string Username { get; set; }
 
 		//change displaying PasswordHash to Password
+		[Required]
 		[Display(Name = "Password")]
-
 		public string PasswordHash { get; set; }
 
 		public UserModel() {}
