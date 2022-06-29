@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Michał Kuprianowicz\\Desktop\\NetPC-Task\\Task1\\Task1.csproj": {}
+    "C:\\Users\\micha\\Desktop\\NetPC-Task\\Task1\\Task1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Michał Kuprianowicz\\Desktop\\NetPC-Task\\Task1\\Task1.csproj": {
+    "C:\\Users\\micha\\Desktop\\NetPC-Task\\Task1\\Task1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Michał Kuprianowicz\\Desktop\\NetPC-Task\\Task1\\Task1.csproj",
+        "projectUniqueName": "C:\\Users\\micha\\Desktop\\NetPC-Task\\Task1\\Task1.csproj",
         "projectName": "Task1",
-        "projectPath": "C:\\Users\\Michał Kuprianowicz\\Desktop\\NetPC-Task\\Task1\\Task1.csproj",
-        "packagesPath": "C:\\Users\\Michał Kuprianowicz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Michał Kuprianowicz\\Desktop\\NetPC-Task\\Task1\\obj\\",
+        "projectPath": "C:\\Users\\micha\\Desktop\\NetPC-Task\\Task1\\Task1.csproj",
+        "packagesPath": "C:\\Users\\micha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\micha\\Desktop\\NetPC-Task\\Task1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Michał Kuprianowicz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\micha\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

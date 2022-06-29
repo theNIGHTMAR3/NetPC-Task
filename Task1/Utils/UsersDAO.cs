@@ -9,7 +9,7 @@ namespace Task1.Utils
 	public class UsersDAO
 	{
 		// connectionString to connect to RegisterdUsers database
-		readonly string connectionString = @" Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=myDataBase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+		readonly string connectionString = @" Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NetPC-Task1;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
 		
 		public UserModel FindUserByNameAndHash(UserModel user)

@@ -9,7 +9,7 @@ namespace Task1.Utils
 	public class ContactsDAO
 	{
 		// connectionString to connect to RegisterdUsers database
-		readonly string connectionString = @" Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=myDataBase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+		readonly string connectionString = @" Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NetPC-Task1;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
 		// return all contact from DB as a list
 		public List<ContactModel> FindAllContacts()
@@ -167,7 +167,7 @@ namespace Task1.Utils
 		{
 
 			// query to find login in database
-			string query = "UPDATE Contacts SET Name=@name,Surname=@surname,Email=@email,Password=@password,Category=@category,Phone_Number=@phoneNumber,Birth_Date=@birthDat WHERE ID= @id";
+			string query = "UPDATE Contacts SET Name=@name,Surname=@surname,Email=@email,Password=@password,Category=@category,Phone_Number=@phoneNumber,Birth_Date=@birthDate WHERE ID=@id";
 
 			// create connection VARIABLE to DB and close it when finished
 			using (SqlConnection connection = new(connectionString))
@@ -185,7 +185,6 @@ namespace Task1.Utils
 
 				cmd.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = updatedContact.ID;
 
-				//does not work, getting null sql exception, spent 2h on that, enough
 				// try to open connection with DB
 				try
 				{

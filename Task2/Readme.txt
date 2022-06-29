@@ -1,0 +1,1 @@
+Z braku czasu przesyłam bardzo szczątkowo wykonane zadanie.
