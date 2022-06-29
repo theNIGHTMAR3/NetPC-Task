@@ -1,11 +1,13 @@
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using Task1.Models;
+
 
 namespace Task1.Utils
 {
-
 	// utility class for some helpful static methods
 	public static class Utilities
 	{
@@ -34,9 +36,6 @@ namespace Task1.Utils
 			}
 			return true;
 		}
-
-
-
 
 		// took these methods from microsoft documentations
 		// create hash from string

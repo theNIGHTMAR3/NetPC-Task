@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Security.Cryptography;
 using Task1.Models;
 
 namespace Task1.Utils
 {
+	// DAO - data access object, contains methods executing queries on Contacts table
 	public class ContactsDAO
 	{
 		// connectionString to connect to RegisterdUsers database

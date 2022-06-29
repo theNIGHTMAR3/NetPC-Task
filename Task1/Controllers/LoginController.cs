@@ -2,44 +2,58 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Task1.Models;
 using Task1.Security;
+using Task1.Utils;
 
 namespace Task1.Controllers
 {
 	public class LoginController : Controller
 	{
-		//private readonly ILogger<HomeController> _logger;
 
 		public IActionResult Index()
 		{
+			// if someone is already logged in
+			if(HttpContext.Session.GetString("user")!=null)
+			{
+				// redirect to main page
+				return View("../Home/Index");
+			}
+			
 			return View();
 		}
 		//handles logging into application
 		public IActionResult LoginProcess(UserModel tempUser)
 		{
-
-			UserAuthentication authentication = new();
-
-			//if login and password is correct
-			if(authentication.IsUserValid(tempUser))
+			// if someone is already logged in
+			if (HttpContext.Session.GetString("user") != null)
 			{
-				// set session to logged user
-				HttpContext.Session.SetString("user", tempUser.Username);
+				// redirect to main page
+				return View("../Home/Index");
+			}
 
-				return View("LoginSuccess", tempUser);
+			UsersDAO userDAO = new();
+
+			// find user by login and password
+			UserModel foundUser = userDAO.FindUserByNameAndHash(tempUser);
+
+			// if user is not found found 
+			if (foundUser==null)
+			{
+				return View("LoginFailed", tempUser);
 			}
 			//else input data is uncorrect
 			else
 			{
-				return View("LoginFailed", tempUser);
-			}
+				// set session to logged user
+				HttpContext.Session.SetString("user", foundUser.Username);
 
-			
+				return View("LoginSuccess", foundUser);
+			}
 		}
 		// clear session after logout
-		public IActionResult Logout(UserModel tempUser)
+		public IActionResult Logout()
 		{
 			HttpContext.Session.Clear();
-			return View("Index");
+			return View("../Home/Index");
 		}
 	}
 }

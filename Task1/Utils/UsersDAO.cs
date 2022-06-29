@@ -5,15 +5,16 @@ using Task1.Models;
 
 namespace Task1.Utils
 {
+	// DAO - data access object, contains methods executing queries on Users table
 	public class UsersDAO
 	{
 		// connectionString to connect to RegisterdUsers database
 		readonly string connectionString = @" Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=myDataBase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
 		
-		public bool FindUserByNameAndHash(UserModel user)
+		public UserModel FindUserByNameAndHash(UserModel user)
 		{
-			bool done = false;
+
 			// query to find user in database
 			string query = "SELECT * FROM Users WHERE USERNAME= @username AND PASSWORDHASH=@passwordHash";
 			
@@ -40,27 +41,31 @@ namespace Task1.Utils
 				{
 					connection.Open();
 					SqlDataReader reader = cmd.ExecuteReader();
-					if (reader.HasRows)
-					{
-						done = true;
-					}
-						
+
+					reader.Read();
+					UserModel foundUser = (
+						new UserModel
+						{
+							ID = (int)reader[0],
+							Username = (string)reader[1],
+							PasswordHash = (string)reader[2],
+						});
+					return foundUser;
+
 				}
 				catch(Exception e)
 				{
 					// print exeption if any
 					Console.WriteLine(e.Message);
 				}
-
 			}
 
-			return done;
+			return null;
 		}
 
 		// checks if user with given login exists in DB
-		public bool FindUserByLogin(string userName)
+		public UserModel FindUserByLogin(string userName)
 		{
-			bool done = false;
 			// query to find login in database
 			string query = "SELECT * FROM Users WHERE USERNAME= @username";
 
@@ -77,11 +82,17 @@ namespace Task1.Utils
 				{
 					connection.Open();
 					SqlDataReader reader = cmd.ExecuteReader();
-					if (reader.HasRows)
-					{
-						done = true;
-					}
+					reader.Read();
 
+					// create new user from DB
+					UserModel foundUser = (
+						new UserModel
+						{
+							ID = (int)reader[0],
+							Username = (string)reader[1],
+							PasswordHash = (string)reader[2],
+						});
+					return foundUser;
 				}
 				catch (Exception e)
 				{
@@ -91,7 +102,7 @@ namespace Task1.Utils
 
 			}
 
-			return done;
+			return null;
 		}
 
 		// adds new user to DB

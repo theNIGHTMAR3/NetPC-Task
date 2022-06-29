@@ -1,10 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Task1.Models;
 using Task1.Utils;
 
@@ -22,13 +17,26 @@ namespace Task1.Controllers
 		// creation of new contact
 		public IActionResult Create()
 		{
+			// if user is not logged in
+			if (HttpContext.Session.GetString("user")==null)
+			{
+				// redirect to main page
+				return View("../Home/Index");
+			}
+
 			return View();
 		}
 		// summary of created contact
 		public IActionResult Summary(ContactModel contact)
 		{
+			// if user is not logged in
+			if (HttpContext.Session.GetString("user") == null)
+			{
+				// redirect to main page
+				return View("../Home/Index");
+			}
 			// if there does not exist contact with given adress
-			if(!contactsDAO.CheckIfEmailExists(contact.Email) && Utilities.IsPasswordStrongEnough(contact.Password))
+			if (!contactsDAO.CheckIfEmailExists(contact.Email) && Utilities.IsPasswordStrongEnough(contact.Password))
 			{
 				// add contact to the DB
 				contactsDAO.AddNewContact(contact);
@@ -42,6 +50,13 @@ namespace Task1.Controllers
 		// show single contact details
 		public IActionResult Details(int id)
 		{
+			// if user is not logged in
+			if (HttpContext.Session.GetString("user") == null)
+			{
+				// redirect to main page
+				return View("../Home/Index");
+			}
+
 			ContactModel singleContact = contactsDAO.FindContactByID(id);
 			return View("ShowDetails", singleContact);
 		}
@@ -49,6 +64,13 @@ namespace Task1.Controllers
 		// delete choosen contact
 		public IActionResult Delete(int id)
 		{
+			// if user is not logged in
+			if (HttpContext.Session.GetString("user") == null)
+			{
+				// redirect to main page
+				return View("../Home/Index");
+			}
+
 			contactsDAO.DeleteContactByID(id);
 			return View("Index", contactsDAO.FindAllContacts());
 		}
@@ -56,6 +78,13 @@ namespace Task1.Controllers
 		// edits choosen contact
 		public IActionResult Edit(int id)
 		{
+			// if user is not logged in
+			if (HttpContext.Session.GetString("user") == null)
+			{
+				// redirect to main page
+				return View("../Home/Index");
+			}
+
 			ContactModel singleContact = contactsDAO.FindContactByID(id);
 			return View("EditContact", singleContact);
 		}
@@ -63,6 +92,13 @@ namespace Task1.Controllers
 		// processes edit operation
 		public IActionResult ProcessEdit(ContactModel contact)
 		{
+			// if user is not logged in
+			if (HttpContext.Session.GetString("user") == null)
+			{
+				// redirect to main page
+				return View("../Home/Index");
+			}
+
 			contactsDAO.UpdateContact(contact);
 			return View("Index", contactsDAO.FindAllContacts());
 		}
