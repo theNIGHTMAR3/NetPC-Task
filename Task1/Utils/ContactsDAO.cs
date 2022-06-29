@@ -9,7 +9,7 @@ namespace Task1.Utils
 	public class ContactsDAO
 	{
 		// connectionString to connect to RegisterdUsers database
-		readonly string connectionString = @" Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NetPC-Task1;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+		readonly string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NetPC-Task1;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
 		// return all contact from DB as a list
 		public List<ContactModel> FindAllContacts()

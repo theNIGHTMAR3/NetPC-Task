@@ -99,8 +99,17 @@ namespace Task1.Controllers
 				return View("../Home/Index");
 			}
 
+			// ckeck if password is strong enough
+			if(!Utilities.IsPasswordStrongEnough(contact.Password))
+			{
+				// password is not strong enough, redirect to ContactFailed page
+				return View("ContactFailed",contact);
+			}
+			else
+			{
 			contactsDAO.UpdateContact(contact);
 			return View("Index", contactsDAO.FindAllContacts());
+			}
 		}
 
 	}
