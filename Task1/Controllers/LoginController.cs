@@ -8,7 +8,6 @@ namespace Task1.Controllers
 {
 	public class LoginController : Controller
 	{
-
 		public IActionResult Index()
 		{
 			// if someone is already logged in
@@ -17,7 +16,6 @@ namespace Task1.Controllers
 				// redirect to main page
 				return View("../Home/Index");
 			}
-			
 			return View();
 		}
 		//handles logging into application

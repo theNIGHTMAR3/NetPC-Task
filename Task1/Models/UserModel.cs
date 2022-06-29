@@ -26,10 +26,7 @@ namespace Task1.Models
 		{
 			this.ID = ID;
 			this.Username = Username;
-			this.PasswordHash = passwordHash;
-			
+			this.PasswordHash = passwordHash;		
 		}
-		
-
 	}
 }
